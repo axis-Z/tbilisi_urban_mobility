@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html prefix="og: https://ogp.me/ns#">
+  <html>
+    <head>
+      <meta charset="utf-8" />
+      <title>ავტოსაგზაო შემთხვევები თბილისში</title>
+      <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1,maximum-scale=1"
+      />
+      <script src="https://api.tiles.mapbox.com/mapbox-gl-js/v2.0.0/mapbox-gl.js"></script>
+      <link
+        href="https://api.mapbox.com/mapbox-gl-js/v2.11.0/mapbox-gl.css"
+        rel="stylesheet"
+      />
+      <meta property="og:title" content="ავტოსაგზაო შემთხვევები თბილისში" />
+      <meta
+        property="og:image"
+        content="https://github.com/axis-Z/tbilisi_urban_mobility/raw/main/interactive%20map%20collisions/src/thumbnail.png"
+      />
+      <meta
+        property="og:description"
+        content="ავტოსაგზაო შემთხვევების გეოგრაფია თბილისში"
+      />
+      <meta
+        property="og:url"
+        content="https://zaxis.ge/map/road-collisions-tbilisi"
+      />
+      <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+Georgian:wght@100;200;300&display=swap"
+        rel="stylesheet"
+      />
+      <link rel="stylesheet" type="text/css" href="style.css" />
+      <style media="screen"></style>
+      <script src="https://api.mapbox.com/mapbox-gl-js/v2.13.0/mapbox-gl.js"></script>
+      <style>
+        body {
+          margin: 0;
+          padding: 0;
+        }
+        #map {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="map">
+        <div
+          class="bottom-left"
+          style="font-family: Noto Serif Georgia, serif; font-size: 20px"
+        >
+          Z.axıs
+        </div>
+      </div>
+      <div id="console">
+        <h1>ავტოსაგზაო შემთხვევები თბილისში</h1>
+        <p>აგრეგირებული მონაცემები - 2019/01/01 - 2022/06/02</p>
+        <p>
+          წყარო:
+          <a href="https://maps.police.ge/">შინაგან საქმეთა სამინისტრო</a>
+        </p>
+        <div class="session">
+          <h2>შემთხვევების სიხშირე</h2>
+          <div class="row colors"></div>
+          <div class="row labels">
+            <div class="label">დაბალი</div>
+            <div class="label"></div>
+            <div class="label"></div>
+            <div class="label"></div>
+            <div class="label"></div>
+            <div class="label">მაღალი</div>
+          </div>
+        </div>
+        <div class="heatmap">
+          <h2>აგრეგირებული მონაცემები უბნების მიხედვით</h2>
+          <iframe
+            src="https://freezing-fifth-infinity.glitch.me/"
+            width="100%"
+            height="570"
+            style="border: none"
+          ></iframe>
+        </div>
+      </div>
+
+      <script>
+        mapboxgl.accessToken =
+          "pk.eyJ1Ijoiam9yam9uZTkwIiwiYSI6ImNrZ3R6M2FvdTBwbmwycXBibGRqM2w2enYifQ.BxjvFSGqefuC9yFCrXC-nQ";
+        const map = new mapboxgl.Map({
+          container: "map",
+          zoom: 12.5,
+          center: [44.74789, 41.7067],
+          pitch: 50,
+          bearing: -20,
+          // Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+          style: "mapbox://styles/jorjone90/clesu9pjc00jf01ntdccmg5dn",
+          cooperativeGestures: false,
+          attributionControl: false,
+          locale: {
+            "ScrollZoomBlocker.CtrlMessage":
+              "ინტერაქციისთვის გამოიყენე ctrl და მაუსი ან + - ღილაკები",
+            "ScrollZoomBlocker.CmdMessage":
+              "მასშტაბისთვის გამოიყენე ⌘ და მაუსი ან + - ღილაკები",
+            "FullscreenControl.Enter": "მთლიან ეკრანზე გაშლა",
+            "FullscreenControl.Exit": "მთლიანი ეკრანის გათიშვა",
+          },
+        });
+        // Add fullscreen control
+        map.addControl(new mapboxgl.FullscreenControl());
+        // Add zoom and rotation controls to the map.
+        map.addControl(new mapboxgl.NavigationControl());
+      </script>
+    </body>
+  </html>
+</html>
